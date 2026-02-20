@@ -1,0 +1,59 @@
+# LLM Gateway rate-limiting configuration template.
+# Adapt for your gateway implementation (Kong, Envoy, custom proxy, etc.).
+
+rate_limits:
+  # Per-user daily token budget
+  per_user_daily:
+    limit: 500000 # tokens per day per user
+    window: 86400 # 24 hours in seconds
+    key: "user_id"
+    action: "reject"
+    message: "Daily token budget exceeded. Resets at midnight UTC."
+
+  # Per-user per-minute request rate
+  per_user_burst:
+    limit: 30 # requests per minute
+    window: 60
+    key: "user_id"
+    action: "throttle"
+    message: "Rate limit exceeded. Please wait before sending more requests."
+
+  # Per-team daily token budget
+  per_team_daily:
+    limit: 5000000 # tokens per day per team
+    window: 86400
+    key: "team_id"
+    action: "reject"
+    message: "Team daily budget exceeded. Contact platform engineering."
+
+  # Organization-wide monthly budget
+  org_monthly:
+    limit: 100000000 # 100M tokens per month
+    window: 2592000 # 30 days in seconds
+    key: "org_id"
+    action: "reject"
+    message: "Organization monthly budget exceeded."
+
+# Model-specific limits (restrict access to expensive models)
+model_access:
+  opus:
+    allowed_teams: ["platform-engineering", "ml-team"]
+    daily_limit: 100000 # tokens per user per day
+  sonnet:
+    allowed_teams: ["*"] # all teams
+    daily_limit: 500000
+  haiku:
+    allowed_teams: ["*"]
+    daily_limit: 1000000
+
+# Alert thresholds
+alerts:
+  - name: "high_spend_user"
+    condition: "user_daily_cost > 50"
+    action: "notify_team_lead"
+  - name: "team_budget_warning"
+    condition: "team_daily_tokens > 4000000"
+    action: "notify_platform"
+  - name: "org_budget_critical"
+    condition: "org_monthly_tokens > 80000000"
+    action: "notify_finance"
