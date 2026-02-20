@@ -7,3 +7,8 @@ output "haiku_profile_arn" {
   description = "ARN of the Haiku inference profile"
   value       = aws_bedrock_inference_profile.haiku.arn
 }
+
+output "opus_profile_arn" {
+  description = "ARN of the Opus inference profile"
+  value       = aws_bedrock_inference_profile.opus.arn
+}

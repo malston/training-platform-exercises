@@ -19,3 +19,14 @@ resource "aws_bedrock_inference_profile" "haiku" {
 
   tags = var.tags
 }
+
+resource "aws_bedrock_inference_profile" "opus" {
+  name        = "${var.project_name}-opus"
+  description = "Inference profile for Claude Opus"
+
+  model_source {
+    copy_from = "arn:aws:bedrock:${var.region}::foundation-model/anthropic.claude-opus-4-6-20260219"
+  }
+
+  tags = var.tags
+}
