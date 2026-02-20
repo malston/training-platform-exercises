@@ -36,12 +36,12 @@ terraform plan
 
 ## Exercises by Module
 
-| Module             | Directory                       | Focus                                            |
-| ------------------ | ------------------------------- | ------------------------------------------------ |
-| 2. Infrastructure  | `exercises/01-infrastructure/`  | VPC endpoints, inference profiles, gateway setup |
-| 3. Configuration   | `exercises/02-configuration/`   | Managed settings, CLAUDE.md hierarchy            |
-| 4. Permissions     | `exercises/03-permissions/`     | Permission rules, sandboxing, cascade testing    |
-| 5. Cost Management | `exercises/04-cost-management/` | Budget controls, dashboards, rate limiting       |
-| 6. Rollout         | `exercises/05-rollout/`         | Cohort planning, rollback, success metrics       |
+| Module             | Directory                      | Focus                                            |
+| ------------------ | ------------------------------ | ------------------------------------------------ |
+| 2. Infrastructure  | `exercises/02-infrastructure/` | VPC endpoints, inference profiles, gateway setup |
+| 3. Configuration   | `exercises/03-configuration/`  | Managed settings, CLAUDE.md hierarchy            |
+| 4. Permissions     | `exercises/04-permissions/`    | Permission rules, sandboxing, cascade testing    |
+| 5. Cost Management | `exercises/05-cost/`           | Budget controls, dashboards, rate limiting       |
+| 6. Rollout         | `exercises/06-rollout/`        | Cohort planning, rollback, success metrics       |
 
 Module 1 (Architecture) is conceptual and has no hands-on exercises.
