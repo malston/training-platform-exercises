@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(terraform *)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Read(*)"
+    ],
+    "deny": ["Bash(terraform destroy *)", "Bash(git push --force *)"]
+  }
+}
